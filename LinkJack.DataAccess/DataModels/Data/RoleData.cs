@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace LinkJack.Logic.DataModels.Data
 {
-    public class InventoryData
+    public class RoleData
     {
+        public string RoleId { get; set; }
+        public string RoleType { get; set; }
+        public string RoleDesc { get; set; }
+    
     }
 }

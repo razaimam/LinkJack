@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace LinkJack.Logic.DataModels.Data
 {
-    public class CustomerData
+    public class InventoryData
     {
+        public string ProductId { get; set; }
+        public int Quantity { get; set; }
+
     }
 }

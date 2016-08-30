@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace LinkJack.Logic.DataModels.Data
 {
-    public class ProductData
+    public class InvoiceItemData
     {
         public string ProductId { get; set; }
         public string ProductName { get; set; }
-        public string ProductDesc { get; set; }
+        public int Quantity { get; set; }
+        public decimal Price { get; set; }
+        public decimal Discount { get; set; }
     }
 }
