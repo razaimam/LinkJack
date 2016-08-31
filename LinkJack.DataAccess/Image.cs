@@ -20,7 +20,5 @@ namespace LinkJack.DataAccess
         public Nullable<bool> isActive { get; set; }
     
         public virtual Product Product { get; set; }
-        public virtual Image Image1 { get; set; }
-        public virtual Image Image2 { get; set; }
     }
 }

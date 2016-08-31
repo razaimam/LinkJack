@@ -16,6 +16,7 @@ namespace LinkJack.DataAccess
     {
         public Customer()
         {
+            this.Users = new HashSet<User>();
             this.Addresses = new HashSet<Address>();
         }
     
@@ -23,10 +24,8 @@ namespace LinkJack.DataAccess
         public string firstName { get; set; }
         public string middleName { get; set; }
         public string lastName { get; set; }
-        public string addressId { get; set; }
-        public string userId { get; set; }
     
+        public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
-        public virtual User User { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using LinkJack.DataAccess.Repository.Interface;
-using LinkJack.Logic.DataModels.Data;
+using LinkJack.DataAccess.DataModels.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

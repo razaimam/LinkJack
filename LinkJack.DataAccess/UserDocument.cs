@@ -23,7 +23,7 @@ namespace LinkJack.DataAccess
         public Nullable<int> docVerficationMsgId { get; set; }
         public string documentType { get; set; }
     
-        public virtual User User { get; set; }
         public virtual VerificationMsg VerificationMsg { get; set; }
+        public virtual User User { get; set; }
     }
 }

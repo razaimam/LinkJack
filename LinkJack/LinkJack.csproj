@@ -208,6 +208,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LinkJack.DataAccess\LinkJack.DataAccess.csproj">
+      <Project>{0d1e29a0-3142-4330-9115-cb68192a58bf}</Project>
+      <Name>LinkJack.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LinkJack.Logic\LinkJack.Logic.csproj">
       <Project>{f78c94a2-640c-4e01-94ea-a7575446a993}</Project>
       <Name>LinkJack.Logic</Name>

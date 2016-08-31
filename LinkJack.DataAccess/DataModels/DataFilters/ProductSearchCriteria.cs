@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkJack.Logic.DataModels.DataFilters
+namespace LinkJack.DataAccess.DataModels.DataFilters
 {
     public class ProductSearchCriteria
     {

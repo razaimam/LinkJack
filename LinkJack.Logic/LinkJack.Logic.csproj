@@ -7,7 +7,7 @@
     <ProjectGuid>{F78C94A2-640C-4E01-94EA-A7575446A993}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LinkJack.Logic</RootNamespace>
+    <RootNamespace>LinkJack.DataAccess</RootNamespace>
     <AssemblyName>LinkJack.Logic</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -39,16 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataModels\DataFilters\CustomerSearchCriteria.cs" />
-    <Compile Include="DataModels\DataFilters\ProductSearchCriteria.cs" />
-    <Compile Include="DataModels\Data\CategoryData.cs" />
-    <Compile Include="DataModels\Data\CustomerData.cs" />
-    <Compile Include="DataModels\Data\InventoryData.cs" />
-    <Compile Include="DataModels\Data\InvoiceData.cs" />
-    <Compile Include="DataModels\Data\OrderData.cs" />
-    <Compile Include="DataModels\Data\ProductData.cs" />
-    <Compile Include="DataModels\Data\RoleData.cs" />
-    <Compile Include="DataModels\Data\UserData.cs" />
     <Compile Include="ProductLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

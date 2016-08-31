@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using LinkJack.DataAccess.Repository.Interface;
-using LinkJack.Logic.DataModels.Data;
+using LinkJack.DataAccess.DataModels.Data;
 
 namespace LinkJack.DataAccess.Repository
 {

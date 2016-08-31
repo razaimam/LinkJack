@@ -16,7 +16,6 @@ namespace LinkJack.DataAccess
     {
         public User()
         {
-            this.Customers = new HashSet<Customer>();
             this.UserDocuments = new HashSet<UserDocument>();
             this.Wishlists = new HashSet<Wishlist>();
         }
@@ -29,8 +28,9 @@ namespace LinkJack.DataAccess
         public Nullable<System.DateTime> createDate { get; set; }
         public Nullable<System.DateTime> lastLogIn { get; set; }
         public Nullable<int> attempts { get; set; }
+        public string customerId { get; set; }
     
-        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual Customer Customer { get; set; }
         public virtual Role Role { get; set; }
         public virtual Status Status { get; set; }
         public virtual ICollection<UserDocument> UserDocuments { get; set; }

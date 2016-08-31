@@ -36,8 +36,6 @@
           <Property Name="firstName" Type="varchar" MaxLength="50" />
           <Property Name="middleName" Type="varchar" MaxLength="50" />
           <Property Name="lastName" Type="varchar" MaxLength="50" />
-          <Property Name="addressId" Type="varchar" MaxLength="50" />
-          <Property Name="userId" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
@@ -185,6 +183,7 @@
           <Property Name="createDate" Type="datetime" />
           <Property Name="lastLogIn" Type="datetime" />
           <Property Name="attempts" Type="int" />
+          <Property Name="customerId" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UserDocument">
           <Key>
@@ -224,30 +223,6 @@
             </Principal>
             <Dependent Role="Address">
               <PropertyRef Name="customerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Customer_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="userId" />
-            </Principal>
-            <Dependent Role="Customer">
-              <PropertyRef Name="userId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Image_Image">
-          <End Role="Image" Type="Self.Image" Multiplicity="1" />
-          <End Role="Image1" Type="Self.Image" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Image">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Image1">
-              <PropertyRef Name="id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -359,6 +334,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="customerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -456,14 +443,6 @@
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Address" EntitySet="Address" />
           </AssociationSet>
-          <AssociationSet Name="FK_Customer_User" Association="Self.FK_Customer_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Customer" EntitySet="Customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Image_Image" Association="Self.FK_Image_Image">
-            <End Role="Image" EntitySet="Image" />
-            <End Role="Image1" EntitySet="Image" />
-          </AssociationSet>
           <AssociationSet Name="FK_Image_Product" Association="Self.FK_Image_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="Image" EntitySet="Image" />
@@ -500,6 +479,10 @@
             <End Role="OrderHeader" EntitySet="OrderHeader" />
             <End Role="ShipmentAdress" EntitySet="ShipmentAdress" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_Customer" Association="Self.FK_User_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="User" EntitySet="User" />
@@ -529,21 +512,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Address">
-          <Key>
-            <PropertyRef Name="addressId" />
-          </Key>
-          <Property Name="addressId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="addressLine" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="houseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="customerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK_Address_Customer" FromRole="Address" ToRole="Customer" />
-        </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="categoryId" />
@@ -553,19 +521,6 @@
           <NavigationProperty Name="Products" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
           <Property Name="categoryDesc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="categoryType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Customer">
-          <Key>
-            <PropertyRef Name="customerId" />
-          </Key>
-          <Property Name="customerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="middleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="addressId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="userId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_Customer" FromRole="Customer" ToRole="Address" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Customer_User" FromRole="Customer" ToRole="User" />
         </EntityType>
         <EntityType Name="Inventory">
           <Key>
@@ -665,9 +620,9 @@
           <NavigationProperty Name="Inventories" Relationship="Self.FK_Inventory_Product" FromRole="Product" ToRole="Inventory" />
           <NavigationProperty Name="Wishlists" Relationship="Self.FK_Wishlist_Product" FromRole="Product" ToRole="Wishlist" />
           <Property Name="infoRegDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Images" Relationship="WebShopModel.FK_Image_Product" FromRole="Product" ToRole="Image" />
           <Property Name="discount" Type="Double" />
           <Property Name="offerText" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Images" Relationship="WebShopModel.FK_Image_Product" FromRole="Product" ToRole="Image" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -675,8 +630,8 @@
           </Key>
           <Property Name="roleId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="roleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
           <Property Name="roleDesc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="WebShopModel.FK_User_Role" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="ShipmentAdress">
           <Key>
@@ -699,7 +654,7 @@
           </Key>
           <Property Name="status1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="statusId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_User_Status" FromRole="Status" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="WebShopModel.FK_User_Status" FromRole="Status" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -710,24 +665,6 @@
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="userId" />
-          </Key>
-          <Property Name="userId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="roleId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="statusId" Type="Int32" />
-          <Property Name="createDate" Type="DateTime" Precision="3" />
-          <Property Name="lastLogIn" Type="DateTime" Precision="3" />
-          <Property Name="attempts" Type="Int32" />
-          <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_User" FromRole="User" ToRole="Customer" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
-          <NavigationProperty Name="Status" Relationship="Self.FK_User_Status" FromRole="User" ToRole="Status" />
-          <NavigationProperty Name="UserDocuments" Relationship="Self.FK_UserDocument_User" FromRole="User" ToRole="UserDocument" />
-          <NavigationProperty Name="Wishlists" Relationship="Self.FK_Wishlist_User" FromRole="User" ToRole="Wishlist" />
         </EntityType>
         <EntityType Name="UserDocument">
           <Key>
@@ -741,8 +678,8 @@
           <Property Name="verificationDate" Type="DateTime" Precision="3" />
           <Property Name="docVerficationMsgId" Type="Int32" />
           <Property Name="documentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UserDocument_User" FromRole="UserDocument" ToRole="User" />
           <NavigationProperty Name="VerificationMsg" Relationship="Self.FK_UserDocument_VerificationMsg" FromRole="UserDocument" ToRole="VerificationMsg" />
+          <NavigationProperty Name="User" Relationship="WebShopModel.FK_UserDocument_User" FromRole="UserDocument" ToRole="User" />
         </EntityType>
         <EntityType Name="VerificationMsg">
           <Key>
@@ -761,20 +698,8 @@
           <Property Name="userId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="number" Type="Int32" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Wishlist_Product" FromRole="Wishlist" ToRole="Product" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Wishlist_User" FromRole="Wishlist" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="WebShopModel.FK_Wishlist_User" FromRole="Wishlist" ToRole="User" />
         </EntityType>
-        <Association Name="FK_Address_Customer">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
-          <End Role="Address" Type="Self.Address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="customerId" />
-            </Principal>
-            <Dependent Role="Address">
-              <PropertyRef Name="customerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Product_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -784,18 +709,6 @@
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="categoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Customer_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="userId" />
-            </Principal>
-            <Dependent Role="Customer">
-              <PropertyRef Name="userId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -895,54 +808,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="roleId" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="roleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Status">
-              <PropertyRef Name="statusId" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="statusId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserDocument_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="UserDocument" Type="Self.UserDocument" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="userId" />
-            </Principal>
-            <Dependent Role="UserDocument">
-              <PropertyRef Name="userId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Wishlist_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Wishlist" Type="Self.Wishlist" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="userId" />
-            </Principal>
-            <Dependent Role="Wishlist">
-              <PropertyRef Name="userId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UserDocument_VerificationMsg">
           <End Role="VerificationMsg" Type="Self.VerificationMsg" Multiplicity="0..1" />
           <End Role="UserDocument" Type="Self.UserDocument" Multiplicity="*" />
@@ -956,9 +821,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Addresses" EntityType="Self.Address" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
-          <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Inventories" EntityType="Self.Inventory" />
           <EntitySet Name="Invoices" EntityType="Self.Invoice" />
           <EntitySet Name="OrderHeaders" EntityType="Self.OrderHeader" />
@@ -971,21 +834,12 @@
           <EntitySet Name="ShipmentAdresses" EntityType="Self.ShipmentAdress" />
           <EntitySet Name="Status" EntityType="Self.Status" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="UserDocuments" EntityType="Self.UserDocument" />
           <EntitySet Name="VerificationMsgs" EntityType="Self.VerificationMsg" />
           <EntitySet Name="Wishlists" EntityType="Self.Wishlist" />
-          <AssociationSet Name="FK_Address_Customer" Association="Self.FK_Address_Customer">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Address" EntitySet="Addresses" />
-          </AssociationSet>
           <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Customer_User" Association="Self.FK_Customer_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="FK_Inventory_Product" Association="Self.FK_Inventory_Product">
             <End Role="Product" EntitySet="Products" />
@@ -1019,22 +873,6 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="Wishlist" EntitySet="Wishlists" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Status" Association="Self.FK_User_Status">
-            <End Role="Status" EntitySet="Status" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserDocument_User" Association="Self.FK_UserDocument_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserDocument" EntitySet="UserDocuments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Wishlist_User" Association="Self.FK_Wishlist_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Wishlist" EntitySet="Wishlists" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserDocument_VerificationMsg" Association="Self.FK_UserDocument_VerificationMsg">
             <End Role="VerificationMsg" EntitySet="VerificationMsgs" />
             <End Role="UserDocument" EntitySet="UserDocuments" />
@@ -1044,11 +882,34 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="Image" EntitySet="Images" />
           </AssociationSet>
-          <AssociationSet Name="FK_Image_Image" Association="WebShopModel.FK_Image_Image">
-            <End Role="Image" EntitySet="Images" />
-            <End Role="Image1" EntitySet="Images" />
+          <EntitySet Name="Customers" EntityType="WebShopModel.Customer" />
+          <EntitySet Name="Users" EntityType="WebShopModel.User" />
+          <AssociationSet Name="FK_User_Customer" Association="WebShopModel.FK_User_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="User" EntitySet="Users" />
           </AssociationSet>
-        </EntityContainer>
+          <AssociationSet Name="FK_User_Role" Association="WebShopModel.FK_User_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Status" Association="WebShopModel.FK_User_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDocument_User" Association="WebShopModel.FK_UserDocument_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserDocument" EntitySet="UserDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wishlist_User" Association="WebShopModel.FK_Wishlist_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Wishlist" EntitySet="Wishlists" />
+          </AssociationSet>
+          <EntitySet Name="Addresses" EntityType="WebShopModel.Address" />
+          <AssociationSet Name="FK_Address_Customer" Association="WebShopModel.FK_Address_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Image">
           <Key>
             <PropertyRef Name="id" />
@@ -1056,10 +917,8 @@
           <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="path" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="productId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Product" Relationship="WebShopModel.FK_Image_Product" FromRole="Image" ToRole="Product" />
           <Property Name="isActive" Type="Boolean" />
-          <NavigationProperty Name="Image1" Relationship="WebShopModel.FK_Image_Image" FromRole="Image" ToRole="Image1" />
-          <NavigationProperty Name="Image2" Relationship="WebShopModel.FK_Image_Image" FromRole="Image1" ToRole="Image" />
+          <NavigationProperty Name="Product" Relationship="WebShopModel.FK_Image_Product" FromRole="Image" ToRole="Product" />
         </EntityType>
         <Association Name="FK_Image_Product">
           <End Type="WebShopModel.Product" Role="Product" Multiplicity="0..1" />
@@ -1073,39 +932,129 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Image_Image">
-          <End Type="WebShopModel.Image" Role="Image" Multiplicity="1" />
-          <End Type="WebShopModel.Image" Role="Image1" Multiplicity="0..1" />
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customerId" />
+          </Key>
+          <Property Name="customerId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="middleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="WebShopModel.FK_User_Customer" FromRole="Customer" ToRole="User" />
+          <NavigationProperty Name="Addresses" Relationship="WebShopModel.FK_Address_Customer" FromRole="Customer" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="roleId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="statusId" Type="Int32" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="lastLogIn" Type="DateTime" Precision="3" />
+          <Property Name="attempts" Type="Int32" />
+          <Property Name="customerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="WebShopModel.FK_User_Customer" FromRole="User" ToRole="Customer" />
+          <NavigationProperty Name="Role" Relationship="WebShopModel.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Status" Relationship="WebShopModel.FK_User_Status" FromRole="User" ToRole="Status" />
+          <NavigationProperty Name="UserDocuments" Relationship="WebShopModel.FK_UserDocument_User" FromRole="User" ToRole="UserDocument" />
+          <NavigationProperty Name="Wishlists" Relationship="WebShopModel.FK_Wishlist_User" FromRole="User" ToRole="Wishlist" />
+        </EntityType>
+        <Association Name="FK_User_Customer">
+          <End Type="WebShopModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="WebShopModel.User" Role="User" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Image">
-              <PropertyRef Name="id" />
+            <Principal Role="Customer">
+              <PropertyRef Name="customerId" />
             </Principal>
-            <Dependent Role="Image1">
-              <PropertyRef Name="id" />
+            <Dependent Role="User">
+              <PropertyRef Name="customerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_User_Role">
+          <End Type="WebShopModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="WebShopModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="roleId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="roleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Status">
+          <End Type="WebShopModel.Status" Role="Status" Multiplicity="0..1" />
+          <End Type="WebShopModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="statusId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="statusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDocument_User">
+          <End Type="WebShopModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="WebShopModel.UserDocument" Role="UserDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="UserDocument">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wishlist_User">
+          <End Type="WebShopModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="WebShopModel.Wishlist" Role="Wishlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="Wishlist">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="addressId" />
+          </Key>
+          <Property Name="addressId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="addressLine" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="houseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="customerId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="WebShopModel.FK_Address_Customer" FromRole="Address" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_Address_Customer">
+          <End Type="WebShopModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="WebShopModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="customerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="WebShopModelStoreContainer" CdmEntityContainer="DBEntities">
-          <EntitySetMapping Name="Addresses">
-            <EntityTypeMapping TypeName="WebShopModel.Address">
-              <MappingFragment StoreEntitySet="Address">
-                <ScalarProperty Name="addressId" ColumnName="addressId" />
-                <ScalarProperty Name="addressLine" ColumnName="addressLine" />
-                <ScalarProperty Name="houseNumber" ColumnName="houseNumber" />
-                <ScalarProperty Name="area" ColumnName="area" />
-                <ScalarProperty Name="pincode" ColumnName="pincode" />
-                <ScalarProperty Name="city" ColumnName="city" />
-                <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="country" ColumnName="country" />
-                <ScalarProperty Name="customerId" ColumnName="customerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="WebShopModel.Category">
               <MappingFragment StoreEntitySet="Category">
@@ -1113,18 +1062,6 @@
                 <ScalarProperty Name="categoryDesc" ColumnName="categoryDesc" />
                 <ScalarProperty Name="categoryId" ColumnName="categoryId" />
                 <ScalarProperty Name="categoryName" ColumnName="categoryName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="WebShopModel.Customer">
-              <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="customerId" ColumnName="customerId" />
-                <ScalarProperty Name="firstName" ColumnName="firstName" />
-                <ScalarProperty Name="middleName" ColumnName="middleName" />
-                <ScalarProperty Name="lastName" ColumnName="lastName" />
-                <ScalarProperty Name="addressId" ColumnName="addressId" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1265,20 +1202,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="WebShopModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="roleId" ColumnName="roleId" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="statusId" ColumnName="statusId" />
-                <ScalarProperty Name="createDate" ColumnName="createDate" />
-                <ScalarProperty Name="lastLogIn" ColumnName="lastLogIn" />
-                <ScalarProperty Name="attempts" ColumnName="attempts" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserDocuments">
             <EntityTypeMapping TypeName="WebShopModel.UserDocument">
               <MappingFragment StoreEntitySet="UserDocument">
@@ -1318,6 +1241,46 @@
                 <ScalarProperty Name="productId" ColumnName="productId" />
                 <ScalarProperty Name="path" ColumnName="path" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="WebShopModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="middleName" ColumnName="middleName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="WebShopModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="attempts" ColumnName="attempts" />
+                <ScalarProperty Name="lastLogIn" ColumnName="lastLogIn" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="statusId" ColumnName="statusId" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="roleId" ColumnName="roleId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="WebShopModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="houseNumber" ColumnName="houseNumber" />
+                <ScalarProperty Name="addressLine" ColumnName="addressLine" />
+                <ScalarProperty Name="addressId" ColumnName="addressId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

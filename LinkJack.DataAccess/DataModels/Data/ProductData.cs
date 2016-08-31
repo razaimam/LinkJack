@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkJack.Logic.DataModels.Data
+namespace LinkJack.DataAccess.DataModels.Data
 {
     public class ProductData
     {
