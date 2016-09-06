@@ -14,9 +14,9 @@ namespace LinkJack.DataAccess
     
     public partial class OrderStatu
     {
-        public string id { get; set; }
+        public int id { get; set; }
         public Nullable<System.DateTime> time { get; set; }
-        public string orderId { get; set; }
+        public Nullable<int> orderId { get; set; }
         public Nullable<int> statusId { get; set; }
         public string place { get; set; }
     

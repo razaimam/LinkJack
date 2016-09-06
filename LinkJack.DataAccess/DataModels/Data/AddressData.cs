@@ -8,6 +8,7 @@ namespace LinkJack.DataAccess.DataModels.Data
 {
     public class AddressData
     {
+        public int? Id { get; set; }
         public string FloorNumber { get; set; }
         public string HouseNumber { get; set; }
         public string Street { get; set; }

@@ -8,7 +8,7 @@ namespace LinkJack.DataAccess.DataModels.Data
 {
     public class CategoryData
     {
-        public string CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string CategoryType { get; set; }
         public string Desc { get; set; }

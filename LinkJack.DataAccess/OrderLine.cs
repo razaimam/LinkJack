@@ -14,9 +14,9 @@ namespace LinkJack.DataAccess
     
     public partial class OrderLine
     {
-        public string orderLineId { get; set; }
-        public string orderId { get; set; }
-        public string productId { get; set; }
+        public int orderLineId { get; set; }
+        public int orderId { get; set; }
+        public Nullable<int> productId { get; set; }
         public string value { get; set; }
         public Nullable<double> price { get; set; }
         public Nullable<int> number { get; set; }

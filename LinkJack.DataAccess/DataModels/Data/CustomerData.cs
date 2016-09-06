@@ -8,7 +8,7 @@ namespace LinkJack.DataAccess.DataModels.Data
 {
     public class CustomerData
     {
-        public string CustomerId { get; set; }
+        public int? CustomerId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }

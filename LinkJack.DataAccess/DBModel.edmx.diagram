@@ -4,45 +4,48 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="21d79ecccdc948119f0a538d887b0b2e" Name="Diagram1" ZoomLevel="67">
-        <EntityTypeShape EntityType="WebShopModel.Category" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.Inventory" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.Invoice" Width="1.5" PointX="10" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.OrderHeader" Width="1.5" PointX="7.75" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.OrderLine" Width="1.5" PointX="10" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.OrderStatu" Width="1.5" PointX="13" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.OrderStatusMsg" Width="1.5" PointX="10.75" PointY="17.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.Payment" Width="1.5" PointX="10" PointY="20.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.Product" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.Role" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.ShipmentAdress" Width="1.5" PointX="10" PointY="23.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.Status" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.UserDocument" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.VerificationMsg" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebShopModel.Wishlist" Width="1.5" PointX="5.875" PointY="9.125" IsExpanded="true" />
-        <AssociationConnector Association="WebShopModel.FK_Product_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="WebShopModel.FK_Inventory_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="WebShopModel.FK_Invoice_OrderHeader" ManuallyRouted="false" />
-        <AssociationConnector Association="WebShopModel.FK_OrderLine_OrderHeader" ManuallyRouted="false" />
-        <AssociationConnector Association="WebShopModel.FK_OrderStatus_OrderHeader" ManuallyRouted="false" />
-        <AssociationConnector Association="WebShopModel.FK_Payment_OrderHeader" ManuallyRouted="false" />
-        <AssociationConnector Association="WebShopModel.FK_ShipmentAdress_OrderHeader" ManuallyRouted="false" />
-        <AssociationConnector Association="WebShopModel.FK_OrderStatus_OrderStatusMsg" ManuallyRouted="false" />
-        <AssociationConnector Association="WebShopModel.FK_Wishlist_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="WebShopModel.FK_UserDocument_VerificationMsg" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="WebShopModel.Image" Width="1.5" PointX="5.25" PointY="15.625" />
-        <AssociationConnector Association="WebShopModel.FK_Image_Product" />
-        <EntityTypeShape EntityType="WebShopModel.Customer" Width="1.5" PointX="0.75" PointY="12.75" />
-        <EntityTypeShape EntityType="WebShopModel.User" Width="1.5" PointX="3" PointY="3.875" />
-        <AssociationConnector Association="WebShopModel.FK_User_Customer" />
-        <AssociationConnector Association="WebShopModel.FK_User_Role" />
-        <AssociationConnector Association="WebShopModel.FK_User_Status" />
-        <AssociationConnector Association="WebShopModel.FK_UserDocument_User" />
-        <AssociationConnector Association="WebShopModel.FK_Wishlist_User" />
-        <EntityTypeShape EntityType="WebShopModel.Address" Width="1.5" PointX="3" PointY="13.375" />
-        <AssociationConnector Association="WebShopModel.FK_Address_Customer" />
-        </Diagram>
+      <Diagram DiagramId="b138aa2b91b8462bae70f44e0123aa57" Name="Diagram1">
+        <EntityTypeShape EntityType="DBModel.Address" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Category" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Customer" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Image" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Inventory" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Invoice" Width="1.5" PointX="8.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.OrderHeader" Width="1.5" PointX="6" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.OrderLine" Width="1.5" PointX="8.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.OrderStatu" Width="1.5" PointX="11.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.OrderStatusMsg" Width="1.5" PointX="9" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Payment" Width="1.5" PointX="8.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Product" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Role" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.ShipmentAdress" Width="1.5" PointX="8.25" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Status" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.sysdiagram" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.User" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.UserDocument" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.VerificationMsg" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Wishlist" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="DBModel.FK_Address_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_OrderHeader_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_User_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Image_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Inventory_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Invoice_Invoice" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Invoice_OrderHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_OrderHeader_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_OrderLine_OrderHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_OrderStatus_OrderHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Payment_OrderHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_ShipmentAdress_OrderHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_OrderStatus_OrderStatusMsg" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Wishlist_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_User_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_UserDocument_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Wishlist_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_UserDocument_VerificationMsg" ManuallyRouted="false" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

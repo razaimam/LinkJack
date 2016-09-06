@@ -14,8 +14,8 @@ namespace LinkJack.DataAccess
     
     public partial class UserDocument
     {
-        public string id { get; set; }
-        public string userId { get; set; }
+        public int id { get; set; }
+        public Nullable<int> userId { get; set; }
         public string documentName { get; set; }
         public string documentPath { get; set; }
         public Nullable<bool> isVerfied { get; set; }
@@ -23,7 +23,7 @@ namespace LinkJack.DataAccess
         public Nullable<int> docVerficationMsgId { get; set; }
         public string documentType { get; set; }
     
-        public virtual VerificationMsg VerificationMsg { get; set; }
         public virtual User User { get; set; }
+        public virtual VerificationMsg VerificationMsg { get; set; }
     }
 }

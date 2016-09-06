@@ -14,7 +14,7 @@ namespace LinkJack.DataAccess
     
     public partial class ShipmentAdress
     {
-        public string shipmentId { get; set; }
+        public int shipmentId { get; set; }
         public string addressLine { get; set; }
         public string houseNumber { get; set; }
         public string area { get; set; }
@@ -22,7 +22,7 @@ namespace LinkJack.DataAccess
         public string state { get; set; }
         public string country { get; set; }
         public string pincode { get; set; }
-        public string orderId { get; set; }
+        public Nullable<int> orderId { get; set; }
     
         public virtual OrderHeader OrderHeader { get; set; }
     }

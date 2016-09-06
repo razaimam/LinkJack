@@ -19,8 +19,8 @@ namespace LinkJack.DataAccess
             this.OrderStatus = new HashSet<OrderStatu>();
         }
     
-        public string message { get; set; }
         public int id { get; set; }
+        public string message { get; set; }
     
         public virtual ICollection<OrderStatu> OrderStatus { get; set; }
     }

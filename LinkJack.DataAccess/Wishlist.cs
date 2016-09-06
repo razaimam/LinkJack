@@ -14,9 +14,9 @@ namespace LinkJack.DataAccess
     
     public partial class Wishlist
     {
-        public string id { get; set; }
-        public string productId { get; set; }
-        public string userId { get; set; }
+        public int id { get; set; }
+        public Nullable<int> productId { get; set; }
+        public Nullable<int> userId { get; set; }
         public Nullable<int> number { get; set; }
     
         public virtual Product Product { get; set; }

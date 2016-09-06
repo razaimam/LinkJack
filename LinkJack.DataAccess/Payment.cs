@@ -14,8 +14,8 @@ namespace LinkJack.DataAccess
     
     public partial class Payment
     {
-        public string id { get; set; }
-        public string orderId { get; set; }
+        public int id { get; set; }
+        public Nullable<int> orderId { get; set; }
         public string paymentType { get; set; }
         public Nullable<bool> isSuccess { get; set; }
         public string error { get; set; }

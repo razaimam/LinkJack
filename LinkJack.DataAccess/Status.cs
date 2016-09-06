@@ -19,8 +19,8 @@ namespace LinkJack.DataAccess
             this.Users = new HashSet<User>();
         }
     
-        public string status1 { get; set; }
         public int statusId { get; set; }
+        public string status1 { get; set; }
     
         public virtual ICollection<User> Users { get; set; }
     }

@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace LinkJack.DataAccess.Repository.Interface
 {
-    interface IRepository<TEntity> : IDisposable where TEntity : class
+    public interface IRepository<TEntity> : IDisposable where TEntity : class
     {
         IList<TEntity> GetAll();
-        TEntity Get(string id);
+        TEntity Get(int id);
         void Save(TEntity model);
         void Delete(int id);
+        void Update(TEntity model);
+        
     }
 }

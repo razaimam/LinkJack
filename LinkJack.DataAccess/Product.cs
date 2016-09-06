@@ -16,16 +16,16 @@ namespace LinkJack.DataAccess
     {
         public Product()
         {
+            this.Images = new HashSet<Image>();
             this.Inventories = new HashSet<Inventory>();
             this.Wishlists = new HashSet<Wishlist>();
-            this.Images = new HashSet<Image>();
         }
     
-        public string productId { get; set; }
+        public int productId { get; set; }
         public string productName { get; set; }
         public string description { get; set; }
         public Nullable<double> price { get; set; }
-        public string categoryId { get; set; }
+        public Nullable<int> categoryId { get; set; }
         public Nullable<System.DateTime> startDate { get; set; }
         public Nullable<System.DateTime> endDate { get; set; }
         public Nullable<System.DateTime> infoRegDate { get; set; }
@@ -33,8 +33,8 @@ namespace LinkJack.DataAccess
         public string offerText { get; set; }
     
         public virtual Category Category { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
         public virtual ICollection<Inventory> Inventories { get; set; }
         public virtual ICollection<Wishlist> Wishlists { get; set; }
-        public virtual ICollection<Image> Images { get; set; }
     }
 }

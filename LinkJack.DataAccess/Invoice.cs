@@ -14,11 +14,13 @@ namespace LinkJack.DataAccess
     
     public partial class Invoice
     {
-        public string id { get; set; }
-        public string orderId { get; set; }
+        public int id { get; set; }
+        public Nullable<int> orderId { get; set; }
         public string invoicePath { get; set; }
         public Nullable<System.DateTime> createDate { get; set; }
     
+        public virtual Invoice Invoice1 { get; set; }
+        public virtual Invoice Invoice2 { get; set; }
         public virtual OrderHeader OrderHeader { get; set; }
     }
 }

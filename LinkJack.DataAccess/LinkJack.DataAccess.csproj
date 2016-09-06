@@ -57,7 +57,7 @@
     <Compile Include="Customer.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataModels\DataFilters\CustomerSearchCriteria.cs" />
+    <Compile Include="DataModels\DataFilters\UserSearchCriteria.cs" />
     <Compile Include="DataModels\DataFilters\ProductSearchCriteria.cs" />
     <Compile Include="DataModels\Data\AddressData.cs" />
     <Compile Include="DataModels\Data\CategoryData.cs" />
@@ -146,15 +146,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBModel.edmx</DependentUpon>

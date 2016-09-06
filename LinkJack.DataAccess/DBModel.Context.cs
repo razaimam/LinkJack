@@ -25,7 +25,10 @@ namespace LinkJack.DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Inventory> Inventories { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
         public virtual DbSet<OrderHeader> OrderHeaders { get; set; }
@@ -38,12 +41,9 @@ namespace LinkJack.DataAccess
         public virtual DbSet<ShipmentAdress> ShipmentAdresses { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserDocument> UserDocuments { get; set; }
         public virtual DbSet<VerificationMsg> VerificationMsgs { get; set; }
         public virtual DbSet<Wishlist> Wishlists { get; set; }
-        public virtual DbSet<Image> Images { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Address> Addresses { get; set; }
     }
 }

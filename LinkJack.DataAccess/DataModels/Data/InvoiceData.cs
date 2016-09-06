@@ -8,11 +8,11 @@ namespace LinkJack.DataAccess.DataModels.Data
 {
     public class InvoiceData
     {
-        public string InvoiceId { get; set; }
+        public int? InvoiceId { get; set; }
         public decimal TotalPrice { get; set; }
         public decimal Discout { get; set; }
         public List<InvoiceItemData> Items { get; set; }
-        public string OrderId { get; set; }
-        public string UserId { get; set; }
+        public int? OrderId { get; set; }
+        public int? UserId { get; set; }
     }
 }

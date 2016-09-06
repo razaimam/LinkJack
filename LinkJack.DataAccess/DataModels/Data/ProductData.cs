@@ -8,7 +8,7 @@ namespace LinkJack.DataAccess.DataModels.Data
 {
     public class ProductData
     {
-        public string ProductId { get; set; }
+        public int? ProductId { get; set; }
         public string ProductName { get; set; }
         public string ProductDesc { get; set; }
         public DateTime? StartDate { get; set; }
@@ -18,6 +18,6 @@ namespace LinkJack.DataAccess.DataModels.Data
         public double? Discount { get; set; }
         public string ImagePath { get; set; }
         public string OfferText { get; set; }
-        public string CategoryId { get; set; }
+        public int? CategoryId { get; set; }
     }
 }

@@ -5,85 +5,116 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace LinkJack.DataAccess.Repository
 {
-    class RoleRepository: IRepository<RoleData>
+    public class RoleRepository: IRepository<RoleData>
     {
         DBEntities dbContext;
         private bool disposed = false;
         public RoleRepository()
         {
-            dbContext = new DBEntities();
+           
         }
         public IList<RoleData> GetAll()
         {
-            var role = dbContext.Roles.ToList();
+            using (dbContext = new DBEntities())
+            {
+                var role = dbContext.Roles.ToList();
 
-            var roleData = role
-                .Select(r => new RoleData
-                {
-                    RoleId = r.roleId,
-                    RoleType = r.roleType,
-                    RoleDesc = r.roleDesc
-                }).ToList();
+                var roleData = role
+                    .Select(r => new RoleData
+                    {
+                        RoleId = r.roleId,
+                        RoleType = r.roleType,
+                        RoleDesc = r.roleDesc
+                    }).ToList();
 
-            return roleData;
+                return roleData;
+            }
         }
 
-        public RoleData Get(string id)
+        public RoleData Get(int id)
         {
-            var role = dbContext.Roles.Find(id);
-            if (role != null)
+            using (dbContext = new DBEntities())
             {
-                return new RoleData
+                var role = dbContext.Roles.Find(id);
+                if (role != null)
                 {
-                    RoleId = role.roleId,
-                    RoleType = role.roleType,
-                    RoleDesc = role.roleDesc
-                };
+                    return new RoleData
+                    {
+                        RoleId = role.roleId,
+                        RoleType = role.roleType,
+                        RoleDesc = role.roleDesc
+                    };
+                }
             }
-
             return null;
         }
-        public IList<RoleData> GetCategoryByType(string name)
+        public IList<RoleData> GetRoleByType(string name)
         {
-            var role = dbContext.Roles.Where(r => r.roleType.Contains(name)).Take(10).ToList();
+            using (dbContext = new DBEntities())
+            {
+                var role = dbContext.Roles.Where(r => r.roleType.Contains(name)).Take(10).ToList();
 
-            var roleData = role
-                .Select(r => new RoleData
-                {
-                    RoleId = r.roleId,
-                    RoleType = r.roleType,
-                    RoleDesc = r.roleDesc
-                }).ToList();
+                var roleData = role
+                    .Select(r => new RoleData
+                    {
+                        RoleId = r.roleId,
+                        RoleType = r.roleType,
+                        RoleDesc = r.roleDesc
+                    }).ToList();
 
-            return roleData;
-
+                return roleData;
+            }
         }
         public void Save(RoleData roleData)
         {
-          Role product =  dbContext.Roles.Add(
-                new Role
-                {
-                    roleType = roleData.RoleType,
-                    roleDesc = roleData.RoleDesc,
-                    
-                });
+            using (dbContext = new DBEntities())
+            {
+                Role product = dbContext.Roles.Add(
+                      new Role
+                      {
+                          roleType = roleData.RoleType,
+                          roleDesc = roleData.RoleDesc,
 
-         
-          dbContext.SaveChanges();
+                      });
 
+
+                dbContext.SaveChanges();
+
+            }
+        }
+        public void Update(RoleData roleData)
+        {
+            using (dbContext = new DBEntities())
+            {
+                Role product = dbContext.Roles.Attach(
+                      new Role
+                      {
+                          roleType = roleData.RoleType,
+                          roleDesc = roleData.RoleDesc,
+
+                      });
+
+                dbContext.Entry(product).State = EntityState.Modified;
+                dbContext.SaveChanges();
+
+            }
         }
 
         public void Delete(int id)
         {
-           Role role = dbContext.Roles.Find(id);
-           if (role != null)
-           {
-               dbContext.Roles.Remove(role);
-               dbContext.SaveChanges();
-           }
+            using (dbContext = new DBEntities())
+            {
+                Role role = dbContext.Roles.Find(id);
+                if (role != null)
+                {
+                    dbContext.Roles.Remove(role);
+                    dbContext.SaveChanges();
+                }
+            }
         }
 
         protected virtual void Dispose(bool disposing)

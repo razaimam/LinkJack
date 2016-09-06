@@ -1,5 +1,6 @@
 ﻿using LinkJack.DataAccess.DataModels.Data;
 using LinkJack.DataAccess.DataModels.DataFilters;
+using LinkJack.Logic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,20 @@ namespace LinkJack.Controllers
     [RoutePrefix("ProductService")]
     public class ProductController : ApiController
     {
-        [Route("GetProduct")]
+        [Route("GetProducts")]
         [HttpPost]
-        public List<ProductData> GetProduct(ProductSearchCriteria prdSC)
+        public IList<ProductData> GetProductS(ProductSearchCriteria prodSC)
         {
-            return  null;           
+            ProductLogic prodLogic = new ProductLogic();
+            return prodLogic.getProducts(prodSC);
         
+        }
+        [Route("GetAllProducts")]
+        [HttpPost]
+        public IList<ProductData> GetAllProduct()
+        {
+            ProductLogic prodLogic = new ProductLogic();
+            return prodLogic.getProducts();
         }
     }
 }

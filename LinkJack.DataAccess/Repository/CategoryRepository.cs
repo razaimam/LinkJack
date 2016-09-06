@@ -5,35 +5,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace LinkJack.DataAccess.Repository
 {
-    class CategoryRepository : IRepository<CategoryData>
+    public class CategoryRepository : IRepository<CategoryData>
     {
         DBEntities dbContext;
         private bool disposed = false;
         public CategoryRepository()
         {
-            dbContext = new DBEntities();
+
         }
         public IList<CategoryData> GetAll()
         {
-            var category = dbContext.Categories.ToList();
+            using (dbContext = new DBEntities())
+            {
+                var category = dbContext.Categories.ToList();
 
-            var categoryData = category
-                .Select(c => new CategoryData
-                {
-                    CategoryId = c.categoryId,
-                    CategoryName = c.categoryName,
-                    CategoryType = c.categoryType,
-                    Desc = c.categoryDesc
-                }).ToList();
+                var categoryData = category
+                    .Select(c => new CategoryData
+                    {
+                        CategoryId = c.categoryId,
+                        CategoryName = c.categoryName,
+                        CategoryType = c.categoryType,
+                        Desc = c.categoryDesc
+                    }).ToList();
 
-            return categoryData;
+                return categoryData;
+            }
         }
 
-        public CategoryData Get(string id)
+        public CategoryData Get(int id)
         {
+            using (dbContext = new DBEntities())
+            {
             var category = dbContext.Categories.Find(id);
             if (category != null)
             {
@@ -46,47 +52,75 @@ namespace LinkJack.DataAccess.Repository
                 };
             }
 
+                }
             return null;
         }
         public IList<CategoryData> GetCategoryByName(string name)
         {
-            var category = dbContext.Categories.Where(p => p.categoryName.Contains(name)).Take(10).ToList();
+            using (dbContext = new DBEntities())
+            {
+                var category = dbContext.Categories.Where(p => p.categoryName.Contains(name)).Take(10).ToList();
 
-            var categoryData = category
-                .Select(c => new CategoryData
-                {
-                    CategoryId = c.categoryId,
-                    CategoryName = c.categoryName,
-                    CategoryType = c.categoryType,
-                    Desc = c.categoryDesc
-                }).ToList();
+                var categoryData = category
+                    .Select(c => new CategoryData
+                    {
+                        CategoryId = c.categoryId,
+                        CategoryName = c.categoryName,
+                        CategoryType = c.categoryType,
+                        Desc = c.categoryDesc
+                    }).ToList();
 
-            return categoryData;
+                return categoryData;
+            }
 
         }
         public void Save(CategoryData categoryData)
         {
-          Category product =  dbContext.Categories.Add(
-                new Category
-                {
-                    categoryName = categoryData.CategoryName,
-                   categoryDesc= categoryData.Desc,
-                    categoryType = categoryData.CategoryType
-                });
+            using (dbContext = new DBEntities())
+            {
+                Category product = dbContext.Categories.Add(
+                      new Category
+                      {
+                          categoryName = categoryData.CategoryName,
+                          categoryDesc = categoryData.Desc,
+                          categoryType = categoryData.CategoryType
+                      });
 
-         
-          dbContext.SaveChanges();
 
+                dbContext.SaveChanges();
+
+            }
+        }
+
+        public void Update(CategoryData categoryData)
+        {
+            using (dbContext = new DBEntities())
+            {
+                Category category = dbContext.Categories.Add(
+                      new Category
+                      {
+                          categoryName = categoryData.CategoryName,
+                          categoryDesc = categoryData.Desc,
+                          categoryType = categoryData.CategoryType
+                      });
+
+                dbContext.Entry(category).State = EntityState.Modified;
+                dbContext.SaveChanges();
+
+            }
         }
 
         public void Delete(int id)
         {
-           Category category = dbContext.Categories.Find(id);
-           if(category!=null)
-           {
-               dbContext.Categories.Remove(category);
-               dbContext.SaveChanges();
-           }
+            using (dbContext = new DBEntities())
+            {
+                Category category = dbContext.Categories.Find(id);
+                if (category != null)
+                {
+                    dbContext.Categories.Remove(category);
+                    dbContext.SaveChanges();
+                }
+            }
         }
 
         protected virtual void Dispose(bool disposing)

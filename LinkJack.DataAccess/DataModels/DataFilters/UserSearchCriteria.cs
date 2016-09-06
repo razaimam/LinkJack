@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace LinkJack.DataAccess.DataModels.DataFilters
 {
-    public class CustomerSearchCriteria
+    public enum UserSearchType { None = 0, CustomerId = 1, UserId, Name, Name_DOB };
+    public class UserSearchCriteria
     {
-        enum SearchType { CustomerId = 1, Name_DOB = 2};
-        public string CustomerId { get; set; }
+        public UserSearchType SearchType { get; set; }
+        public int CustomerId { get; set; }
+        public int UserId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }

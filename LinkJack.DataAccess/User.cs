@@ -16,21 +16,23 @@ namespace LinkJack.DataAccess
     {
         public User()
         {
+            this.OrderHeaders = new HashSet<OrderHeader>();
             this.UserDocuments = new HashSet<UserDocument>();
             this.Wishlists = new HashSet<Wishlist>();
         }
     
-        public string userId { get; set; }
+        public int userId { get; set; }
         public string password { get; set; }
-        public string roleId { get; set; }
+        public Nullable<int> roleId { get; set; }
         public string email { get; set; }
         public Nullable<int> statusId { get; set; }
         public Nullable<System.DateTime> createDate { get; set; }
         public Nullable<System.DateTime> lastLogIn { get; set; }
         public Nullable<int> attempts { get; set; }
-        public string customerId { get; set; }
+        public Nullable<int> customerId { get; set; }
     
         public virtual Customer Customer { get; set; }
+        public virtual ICollection<OrderHeader> OrderHeaders { get; set; }
         public virtual Role Role { get; set; }
         public virtual Status Status { get; set; }
         public virtual ICollection<UserDocument> UserDocuments { get; set; }

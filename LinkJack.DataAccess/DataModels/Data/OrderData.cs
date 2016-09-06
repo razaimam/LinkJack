@@ -8,8 +8,8 @@ namespace LinkJack.DataAccess.DataModels.Data
 {
     public class OrderData
     {
-        public string CustomerId { get; set; }
-        public string UserId { get; set; }
+        public int? CustomerId { get; set; }
+        public int? UserId { get; set; }
         public  List<ProductOrderData> Products { get; set; }
 
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LinkJack.DataAccess.Repository
 {
-    class CustomerRepository
+    public class CustomerRepository
     {
     }
 }

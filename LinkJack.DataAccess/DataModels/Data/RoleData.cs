@@ -8,7 +8,7 @@ namespace LinkJack.DataAccess.DataModels.Data
 {
     public class RoleData
     {
-        public string RoleId { get; set; }
+        public int? RoleId { get; set; }
         public string RoleType { get; set; }
         public string RoleDesc { get; set; }
     

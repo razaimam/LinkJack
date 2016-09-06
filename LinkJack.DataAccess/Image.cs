@@ -14,9 +14,9 @@ namespace LinkJack.DataAccess
     
     public partial class Image
     {
-        public string id { get; set; }
+        public int id { get; set; }
         public string path { get; set; }
-        public string productId { get; set; }
+        public Nullable<int> productId { get; set; }
         public Nullable<bool> isActive { get; set; }
     
         public virtual Product Product { get; set; }

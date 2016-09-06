@@ -19,7 +19,7 @@ namespace LinkJack.DataAccess
             this.Users = new HashSet<User>();
         }
     
-        public string roleId { get; set; }
+        public int roleId { get; set; }
         public string roleType { get; set; }
         public string roleDesc { get; set; }
     

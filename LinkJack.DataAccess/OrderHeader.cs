@@ -23,15 +23,18 @@ namespace LinkJack.DataAccess
             this.ShipmentAdresses = new HashSet<ShipmentAdress>();
         }
     
-        public string orderId { get; set; }
+        public int orderId { get; set; }
         public string orderType { get; set; }
         public Nullable<System.DateTime> createDate { get; set; }
-        public string customerId { get; set; }
+        public Nullable<int> customerId { get; set; }
         public Nullable<double> amount { get; set; }
         public Nullable<System.DateTime> completedDate { get; set; }
         public Nullable<double> discout { get; set; }
+        public Nullable<int> userId { get; set; }
     
+        public virtual Customer Customer { get; set; }
         public virtual ICollection<Invoice> Invoices { get; set; }
+        public virtual User User { get; set; }
         public virtual ICollection<OrderLine> OrderLines { get; set; }
         public virtual ICollection<OrderStatu> OrderStatus { get; set; }
         public virtual ICollection<Payment> Payments { get; set; }

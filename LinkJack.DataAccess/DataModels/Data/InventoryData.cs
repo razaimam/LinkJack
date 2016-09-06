@@ -8,7 +8,8 @@ namespace LinkJack.DataAccess.DataModels.Data
 {
     public class InventoryData
     {
-        public string ProductId { get; set; }
+        public int? Id { get; set; }
+        public int? ProductId { get; set; }
         public int Quantity { get; set; }
 
     }

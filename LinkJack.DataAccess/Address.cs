@@ -14,7 +14,7 @@ namespace LinkJack.DataAccess
     
     public partial class Address
     {
-        public string addressId { get; set; }
+        public int addressId { get; set; }
         public string addressLine { get; set; }
         public string houseNumber { get; set; }
         public string area { get; set; }
@@ -22,7 +22,7 @@ namespace LinkJack.DataAccess
         public string city { get; set; }
         public string state { get; set; }
         public string country { get; set; }
-        public string customerId { get; set; }
+        public Nullable<int> customerId { get; set; }
     
         public virtual Customer Customer { get; set; }
     }

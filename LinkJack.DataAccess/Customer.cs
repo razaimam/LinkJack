@@ -16,16 +16,19 @@ namespace LinkJack.DataAccess
     {
         public Customer()
         {
-            this.Users = new HashSet<User>();
             this.Addresses = new HashSet<Address>();
+            this.OrderHeaders = new HashSet<OrderHeader>();
+            this.Users = new HashSet<User>();
         }
     
-        public string customerId { get; set; }
+        public int customerId { get; set; }
         public string firstName { get; set; }
         public string middleName { get; set; }
         public string lastName { get; set; }
+        public Nullable<System.DateTime> birthDate { get; set; }
     
-        public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<OrderHeader> OrderHeaders { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -14,8 +14,8 @@ namespace LinkJack.DataAccess
     
     public partial class Inventory
     {
-        public string id { get; set; }
-        public string productId { get; set; }
+        public int id { get; set; }
+        public Nullable<int> productId { get; set; }
         public Nullable<int> number { get; set; }
         public Nullable<System.DateTime> insertDate { get; set; }
         public Nullable<System.DateTime> updateDate { get; set; }

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace LinkJack.DataAccess.DataModels.DataFilters
 {
+    public enum ProductSearchType { None = 0, ProductId, CategoryId, ProductName }
     public class ProductSearchCriteria
     {
-        public string ProductId { get; set; }
-        public string CategoryId { get; set; }
-        public bool isProductIdSpecified { get; set; }
-        public bool isCategoryIdSpecified { get; set; }
+        public ProductSearchType SearchType { get; set; }
+        public int ProductId { get; set; }
+        public int CategoryId { get; set; }
+        public string ProductName { get; set; }
 
     }
 }

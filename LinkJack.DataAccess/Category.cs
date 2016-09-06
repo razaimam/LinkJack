@@ -19,7 +19,7 @@ namespace LinkJack.DataAccess
             this.Products = new HashSet<Product>();
         }
     
-        public string categoryId { get; set; }
+        public int categoryId { get; set; }
         public string categoryName { get; set; }
         public string categoryDesc { get; set; }
         public string categoryType { get; set; }
