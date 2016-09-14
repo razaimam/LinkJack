@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace LinkJack.Controllers
 {
+    [RoutePrefix("api/UserService")]
     public class UserController : ApiController
     {
         [Route("GetUsers")]
@@ -21,11 +22,30 @@ namespace LinkJack.Controllers
 
         }
         [Route("GetAllUsers")]
-        [HttpPost]
         public IList<UserData> GetAllUsers()
         {
             UserLogic userLogic = new UserLogic();
             return userLogic.GetUsers();
+        }
+        [Route("UpdateUser")]
+        [HttpPost]
+        public void Update(UserData userData)
+        {
+            UserLogic userLogic = new UserLogic();
+            userLogic.Update(userData);
+        }
+        [Route("SaveUser")]
+        [HttpPost]
+        public void Save(UserData userData)
+        {
+            UserLogic userLogic = new UserLogic();
+            userLogic.Save(userData);
+        }
+        [Route("DeleteUser/{id}")]
+        public void Delete(int id)
+        {
+            UserLogic userLogic = new UserLogic();
+            userLogic.Delete(id);
         }
     }
 }

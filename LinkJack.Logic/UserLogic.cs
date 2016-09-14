@@ -45,5 +45,20 @@ namespace LinkJack.Logic
             }
             return UserList;
         }
+        public void Save(UserData userData)
+        {
+            repository = new UserRepository();
+            repository.Save(userData);
+        }
+        public void Update(UserData userData)
+        {
+            repository = new UserRepository();
+            repository.Save(userData);
+        }
+        public void Delete(int id)
+        {
+            repository = new UserRepository();
+            repository.Delete(id);
+        }
     }
 }

@@ -11,7 +11,7 @@ using System.Web.Http;
 
 namespace LinkJack.Controllers
 {
-    [RoutePrefix("ProductService")]
+    [RoutePrefix("api/ProductService")]
     public class ProductController : ApiController
     {
         [Route("GetProducts")]
@@ -20,14 +20,34 @@ namespace LinkJack.Controllers
         {
             ProductLogic prodLogic = new ProductLogic();
             return prodLogic.getProducts(prodSC);
-        
+
         }
         [Route("GetAllProducts")]
-        [HttpPost]
         public IList<ProductData> GetAllProduct()
         {
             ProductLogic prodLogic = new ProductLogic();
             return prodLogic.getProducts();
+        }
+
+        [Route("UpdateProduct")]
+        [HttpPost]
+        public void Update(ProductData prodData)
+        {
+            ProductLogic prodLogic = new ProductLogic();
+            prodLogic.Update(prodData);
+        }
+        [Route("SaveProduct")]
+        [HttpPost]
+        public void Save(ProductData prodData)
+        {
+            ProductLogic prodLogic = new ProductLogic();
+            prodLogic.Save(prodData);
+        }
+        [Route("DeleteProduct/{id}")]
+        public void Delete(int id)
+        {
+            UserLogic prodLogic = new UserLogic();
+            prodLogic.Delete(id);
         }
     }
 }

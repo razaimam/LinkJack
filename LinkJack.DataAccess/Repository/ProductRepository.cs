@@ -189,7 +189,8 @@ namespace LinkJack.DataAccess.Repository
                 Product product = dbContext.Products.Find(id);
                 if (product != null)
                 {
-                    dbContext.Products.Remove(product);
+                    product.endDate = DateTime.Now;
+                    dbContext.Entry(product).State= EntityState.Modified;
                     dbContext.SaveChanges();
                 }
             }

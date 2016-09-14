@@ -56,7 +56,7 @@ namespace LinkJack.DataAccess.Repository
         {
             using (dbContext = new DBEntities())
             {
-                var role = dbContext.Roles.Where(r => r.roleType.Contains(name)).Take(10).ToList();
+                var role = dbContext.Roles.Where(r => r.roleType.Contains(name)).ToList();
 
                 var roleData = role
                     .Select(r => new RoleData

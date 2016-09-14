@@ -41,5 +41,20 @@ namespace LinkJack.Logic
             }
             return ProductList;
         }
+        public void Save(ProductData prodData)
+        {
+            repository = new ProductRepository();
+            repository.Save(prodData);
+        }
+        public void Update(ProductData prodData)
+        {
+            repository = new ProductRepository();
+            repository.Save(prodData);
+        }
+        public void Delete(int id)
+        {
+            repository = new ProductRepository();
+            repository.Delete(id);
+        }
     }
 }
