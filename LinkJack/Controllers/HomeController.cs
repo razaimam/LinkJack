@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace LinkJack.Controllers
 {
-    public class HomeController : Controller
+    [RoutePrefix("api")]
+    public class HomeController : ApiController
     {
-        public ActionResult Index()
-        {
-            ViewBag.Title = "Home Page";
 
-            return View();
+
+        [Route("profile")]
+        public string getdata()
+        {
+
+            return "Ankit";
+
         }
     }
 }

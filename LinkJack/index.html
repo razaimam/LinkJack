@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sample App</title>
+    <meta http-equiv="X-UA-Compatible" content="IE = edge" />
+
+    <link href="Client/app/content/Styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.11.2/select.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.css" />
+
+
+
+</head>
+<body ng-app="app">
+    <toaster-container toaster-options="{'time-out':6000,'close-button':true,'position-class':'toast-bottom-right'}"></toaster-container>
+    <div ng-include="'Client/app/views/demo.html'"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="Client/app/bower_components/angular-1.4.8/angular-1.4.8/angular.js"></script>
+    <script src="Client/app/bower_components/angular-1.4.8/angular-1.4.8/angular-sanitize.js"></script>
+    <script src="Client/app/bower_components/angular-1.4.8/angular-1.4.8/angular-cookies.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.11.2/select.js"></script>
+    <script src="Client/app/bower_components/angular-1.4.8/angular-1.4.8/angular-animate.js"></script>
+    <script src="Client/app/bower_components/angular-1.4.8/angular-1.4.8/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.1.0/ui-bootstrap-tpls.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.10/toaster.js"></script>
+
+
+    <!--module files-->
+    <script src="Client/app/app.module.js"></script>
+
+    <script src="Client/app/app.config.js"></script>
+
+
+    <script src="Client/app/core/core.module.js"></script>
+    <script src="Client/app/blocks/logger.module.js"></script>
+    <script src="Client/app/blocks/exception.module.js"></script>
+    <script src="Client/app/views/demo.module.js"></script>
+    
+    <script src="Client/app/blocks/logger.js"></script>
+    <script src="Client/app/blocks/exception.js"></script>
+    <script src="Client/app/blocks/exception-handler.provider.js"></script>
+
+    <script src="Client/app/core/core.authservice.js"></script>
+    <script src="Client/app/core/core.config.js"></script>
+    <script src="Client/app/core/core.directives.js"></script>
+    <script src="Client/app/core/core.factory.js"></script>
+
+    <script src="Client/app/views/demo.controller.js"
+
+    <div id="loaderDiv" loader>
+        <img src="Client/app/content/loader.gif" class="ajax-loader" />
+    </div>
+
+
+</body>
+</html>

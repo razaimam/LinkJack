@@ -1,0 +1,32 @@
+﻿body {
+
+
+}
+
+#loaderDiv {
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index: 1100;
+    opacity: .6;
+
+}
+
+.ajax-loader {
+    position: absolute;
+    left:50%;
+    top:50%;
+    margin-left: -32px;
+    margin-top: -32px;
+    display: block;
+
+}
+
+.gridStyle1 {
+    border: 1px solid rgb(212,212,212);
+    width: 623px;
+    height: 150px;
+
+}

@@ -1,0 +1,23 @@
+﻿<div ng-controller="demoCtrl as sam">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Sample Angular Application</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#/start">Start</a></li>
+                <li><a href="#/summary">Summary</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li style="text-align:right"><a href="#">{{sam.user}}</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div ui-view></div>
+    </div>
+
+</div>
+
+
