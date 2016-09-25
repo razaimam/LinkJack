@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkJack", "LinkJack\LinkJa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkJack.Tests", "LinkJack.Tests\LinkJack.Tests.csproj", "{45A67F37-4492-410D-8863-1E82204FEBEA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkJack.Logic", "LinkJack.Logic\LinkJack.Logic.csproj", "{F78C94A2-640C-4E01-94EA-A7575446A993}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkJack.DataAccess", "LinkJack.DataAccess\LinkJack.DataAccess.csproj", "{0D1E29A0-3142-4330-9115-CB68192A58BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{45A67F37-4492-410D-8863-1E82204FEBEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45A67F37-4492-410D-8863-1E82204FEBEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45A67F37-4492-410D-8863-1E82204FEBEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F78C94A2-640C-4E01-94EA-A7575446A993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F78C94A2-640C-4E01-94EA-A7575446A993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F78C94A2-640C-4E01-94EA-A7575446A993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F78C94A2-640C-4E01-94EA-A7575446A993}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D1E29A0-3142-4330-9115-CB68192A58BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D1E29A0-3142-4330-9115-CB68192A58BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D1E29A0-3142-4330-9115-CB68192A58BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D1E29A0-3142-4330-9115-CB68192A58BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,12 +13,14 @@ namespace LinkJack
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+            var formatters = GlobalConfiguration.Configuration.Formatters;
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            formatters.Remove(formatters.XmlFormatter);
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
         }
     }
 }
